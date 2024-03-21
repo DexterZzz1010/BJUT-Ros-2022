@@ -1,0 +1,13 @@
+catkin_create_pkg chapter9 std_msgs rospy roscpp
+cd ~/catkin_ws_zyf/src/chapter9/src
+touch broadCaster.cpp
+gedit broadCaster.cpp
+touch robListener.cpp
+gedit robListener.cpp
+cd ~/catkin_ws_zyf
+catkin_make
+roscore
+cd ~/catkin_ws_zyf
+source ./devel/setup.bash
+rosrun chapter9 robListener
+rosrun chapter9 broadCaster

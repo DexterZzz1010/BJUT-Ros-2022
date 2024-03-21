@@ -1,0 +1,12 @@
+catkin_create_pkg chapter6 std_msgs rospy roscpp
+mkdir launch
+touch launch/turtlemimic.launch
+roscore
+source ./devel/setup.bash
+roslaunch chapter6 turtlemimic.launch
+$ rostopic pub /turtlesim1/turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+rqt_graph
+
+
+roscore
+rosrun gazebo_ros gazebo

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find mbot_description)/urdf/mbot_base_gazebo.xacro" />
+    <xacro:include filename="$(find mbot_description)/urdf/sensors/kinect_gazebo.xacro" />
+    <xacro:include filename="$(find mbot_description)/urdf/sensors/lidar_gazebo.xacro" />
+
+    <xacro:property name="kinect_offset_x" value="0.15" />
+    <xacro:property name="kinect_offset_y" value="0" />
+    <xacro:property name="kinect_offset_z" value="0.08" />
+
+    <xacro:property name="lidar_offset_x" value="0" />
+    <xacro:property name="lidar_offset_y" value="0" />
+    <xacro:property name="lidar_offset_z" value="0.13" />
+    
+
+   
+    <!-- kinect -->
+    <joint name="kinect_joint" type="fixed">
+        <origin xyz="${kinect_offset_x} ${kinect_offset_y} ${kinect_offset_z}" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="kinect_link"/>
+    </joint>
+
+     <xacro:kinect_camera prefix="kinect"/>
+
+    <!-- lidar -->
+    <joint name="lidar_joint" type="fixed">
+        <origin xyz="${lidar_offset_x} ${lidar_offset_y} ${lidar_offset_z}" rpy="0 0 0" />
+        <parent link="base_link"/>
+        <child link="laser_link"/>
+    </joint>
+
+    <xacro:rplidar prefix="laser"/>
+
+
+	    <link name="laser_base_link">
+			<visual>
+		
+				<origin xyz=" 0 0 0.064 " rpy="0 0 0" />
+				<geometry>
+					<box size="0.2 0.2 0.07" />
+				</geometry>
+		     <material name="yellow">
+		        <color rgba="1 0.2 0 1"/>
+		    </material>
+			</visual>
+	    </link>
+    
+	    <joint name="laser_base_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="laser_base_link"/>
+	    </joint>
+
+
+    <mbot_base_gazebo/>
+
+
+
+</robot>

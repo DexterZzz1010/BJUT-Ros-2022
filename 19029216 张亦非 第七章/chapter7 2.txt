@@ -1,0 +1,16 @@
+catkin_create_pkg chapter7 std_msgs rospy roscpp
+cd ~/catkin_ws_zyf/src/chapter7/src
+touch TurtleSrv.srv
+touch turtle_cmd_server.cpp
+gedit turtle_cmd_server.cpp
+touch turtle_cmd_client.cpp
+gedit turtle_cmd_client.cpp
+cd ~/catkin_ws_zyf
+catkin_make
+roscore
+rosrun turtlesim turtlesim_nod
+rosrun chaper7 turtle_create
+rosrun chaper7 turtle_create
+rosrun chaper7 turtle_cmd_server
+rosrun chaper7 turtle_cmd_client
+

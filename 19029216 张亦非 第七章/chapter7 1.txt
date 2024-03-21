@@ -1,0 +1,10 @@
+catkin_create_pkg chapter7 std_msgs rospy roscpp
+mkdir launch
+touch launch/turtle_control.launch
+cd ~/catkin_ws_zyf
+catkin_make
+roscore
+cd ~/catkin_ws_zyf
+source ./devel/setup.bash
+rosrun chapter7 turtle_control
+rosrun turtlesim turtlesim_node

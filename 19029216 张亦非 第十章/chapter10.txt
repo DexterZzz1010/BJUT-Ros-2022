@@ -1,0 +1,14 @@
+roscore
+source ./devel/setup.bash
+roslaunch chapter10 urdf_R2D2.launch
+cd ~/catkin_ws_zyf
+catkin_make
+roscore
+source ./devel/setup.bash
+roslaunch chapter10 R2D2.launch
+cd ~/catkin_ws_dexter
+catkin_make
+roscore
+source ./devel/setup.bash
+roslaunch chapter10 R2D2_gazebo.launch
+roslaunch mbot_teleop mbot_teleop.launch
